@@ -2,7 +2,7 @@
 유튜브에서 .ass 확장자의 자막을 보이게 해줍니다.
 
 ## 설치
-1. https://github.com/mbin96/youtube_ass_subtitle/archive/refs/tags/v0.1.zip 링크를 다운로드합니다
+1. https://github.com/mbin96/youtube_ass_subtitle/archive/refs/tags/lastest.zip 링크를 다운로드합니다
 2. 적당한곳에 압축을 해제 합니다.
 3. 크롬브라우저 주소창에 `chrome://extensions/`을 입력하여 확장 프로그램 탭을 엽니다.
 4. 우상단 `개발자 모드` 버튼을 눌러 개발자 모드를 활성화 합니다.
@@ -14,7 +14,7 @@
 3. 팝업창에서 '파일선택' 버튼을 눌러 ass 자막을 선택합니다.
 4. load subtitle 버튼을 누르면 자막이 나옵니다.
 
-## TODO
+## TODOadd
 - 폰트 불러오기 기능 추가
 
 ## BUG

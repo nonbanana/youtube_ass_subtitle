@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "youtube ass subtitle",
-    "version": "0.1",
+    "version": "0.1.1",
     "description": "apply ass subtitle at youtube",
     "browser_action": {
         "default_popup": "popup.html",
@@ -22,6 +22,7 @@
             "js": [ "src/worker_proxy/worker_proxy.js", "src/subtitles_octopus/subtitles-octopus.js", "src/loader.js"]
         }
     ],
+    "content_security_policy": "script-src 'self' 'wasm-eval'; object-src 'self'",
     "web_accessible_resources": ["worker_proxy.html"],
     "permissions": [ "https://*.youtube.com/*" ],
     "icons": {
