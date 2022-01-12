@@ -7,6 +7,18 @@ document.getElementById('load_sub_bt').addEventListener('click', function() {
     chrome.tabs.executeScript({
         code: 'var instance = new SubtitlesOctopus(options);'
     });
+
+    chrome.tabs.onUpdated.addListener(function
+        (tabId, changeInfo, tab) {
+          if (changeInfo.url) {
+
+              chrome.tabs.executeScript({
+                  code: 'instance.dispose();'
+              });
+              }
+        }
+    );
+
 });
 
 const input = document.getElementById('subtitle');

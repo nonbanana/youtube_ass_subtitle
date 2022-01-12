@@ -24,7 +24,7 @@
     ],
     "content_security_policy": "script-src 'self' 'wasm-eval'; object-src 'self'",
     "web_accessible_resources": ["worker_proxy.html"],
-    "permissions": [ "https://*.youtube.com/*" ],
+    "permissions": [ "https://*.youtube.com/*", "tabs"],
     "icons": {
         "16": "image/16.png",
         "32": "image/32.png",
