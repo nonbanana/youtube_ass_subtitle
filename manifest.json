@@ -14,7 +14,7 @@
     },
     "background": {
         "persistent": false,
-        "scripts": [ "src/worker_proxy/worker_proxy.js" ]
+        "scripts": [ "src/worker_proxy/worker_proxy.js", "src/background.js"]
     },
     "content_scripts": [
         {
