@@ -6,7 +6,7 @@ chrome.tabs.onUpdated.addListener(function
             code: 'subtitle_instance.dispose();'
         });
         chrome.tabs.executeScript({
-            code: 'console.log("asdf");'
+            code: 'console.log("dispose subtitle");'
         });
     }
 });

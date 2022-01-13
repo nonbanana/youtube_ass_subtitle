@@ -10,8 +10,20 @@
     </style>
   </head>
   <body>
-    <button id="load_sub_bt" disabled>load subtitle</button>
-    <input type="file" onchange="fileChange()" id="subtitle" name="subtitle" accept=".ass, .ssa">
+    <div>
+      <button id="load_sub_bt" disabled>load subtitle</button>
+    </div>
+    <br>
+    <div>
+      subtitle file:
+      <input type="file" id="subtitle" name="subtitle" accept=".ass, .ssa">
+    </div>
+    <br>
+    <div>
+      font file:
+      <input type="file" id="font" name="font" accept=".ttf, .otf" multiple>
+    </div>
+    
     <script src="src/popup.js"></script>
   </body>
 </html>
