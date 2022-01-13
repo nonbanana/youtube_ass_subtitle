@@ -33,17 +33,11 @@ function appendFont(){
         code: 'console.log("font file appended")'
     });
     for (var i = 0; i < files.length; i++){
-        chrome.tabs.executeScript({
-            code: 'console.log("' + files[i] + '");'
-        });
         // FIXME - chrome.tabs.executeScript 대신 message로 통신하는게 나아보임  
         chrome.tabs.executeScript({
             code: 'options["fonts"].push("' + URL.createObjectURL(files[i]) + '");'
         });
     }
-    chrome.tabs.executeScript({
-        code: 'console.log(options["fonts"]);'
-    });
     // 버튼 활성화
     document.getElementById('load_sub_bt').removeAttribute('disabled')
 }
