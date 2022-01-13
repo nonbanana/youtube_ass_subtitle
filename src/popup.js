@@ -38,6 +38,4 @@ function appendFont(){
             code: 'options["fonts"].push("' + URL.createObjectURL(files[i]) + '");'
         });
     }
-    // 버튼 활성화
-    document.getElementById('load_sub_bt').removeAttribute('disabled')
 }
