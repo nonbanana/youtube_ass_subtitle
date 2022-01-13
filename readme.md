@@ -18,3 +18,11 @@
 
 ## 이 프로젝트에 사용된 오픈소스 라이센스
 license 파일을 참고하세요
+
+## 기부
+이 프로젝트가 마음에 드셨다면 개발자가 치킨을 먹을 수 있게 도와주세요
+  
+toss
+- link: [toss.me/xecachan](https://toss.me/xecachan)
+  
+![toss.me/xecachan](donation_link_toss.png)
