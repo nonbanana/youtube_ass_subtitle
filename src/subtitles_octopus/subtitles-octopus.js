@@ -401,9 +401,10 @@ var SubtitlesOctopus = function (options) {
             videoSize = self.getVideoPosition();
             width = videoSize.width * self.pixelRatio;
             height = videoSize.height * self.pixelRatio;
-            var offset = self.canvasParent.getBoundingClientRect().top - self.video.getBoundingClientRect().top;
-            top = videoSize.y - offset;
-            left = videoSize.x;
+            var offsetY = self.canvasParent.getBoundingClientRect().top - self.video.getBoundingClientRect().top;
+            var offsetX = self.canvasParent.getBoundingClientRect().left - self.video.getBoundingClientRect().left;
+            top = videoSize.y - offsetY;
+            left = videoSize.x - offsetX;
         }
         if (!width || !height) {
             if (!self.video) {
