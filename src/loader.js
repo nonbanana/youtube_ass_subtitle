@@ -13,7 +13,7 @@ var options = {
         chrome.runtime.getURL('data/fonts/NotoSansCJKkr-Regular.otf')
         ],
     debug: false,
-    lossyRender: true,
+    // lossyRender: true,
     // blendRender: true,
     // subHeightRatio: 0.75,
     workerUrl: chrome.runtime.getURL('src/subtitles_octopus/subtitles-octopus-worker.js')
