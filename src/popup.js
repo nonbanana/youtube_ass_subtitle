@@ -5,9 +5,14 @@ document.getElementById('load_sub_bt').addEventListener('click', function() {
     chrome.tabs.executeScript({
         code: 'console.log("load subtitle")'
     });
-    chrome.tabs.executeScript({
-        code: 'subtitle_instance = new SubtitlesOctopus(options);'
+    // chrome.tabs.executeScript({
+    //     code: 'subtitle_instance = new SubtitlesOctopus(options);'
+    // });
+    console.log("aaaaaaa");
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+        chrome.tabs.sendMessage(tabs[0].id, { greeting: "load" }, function(response){});
     });
+    // chrome.runtime.sendMessage({greeting: "load"}, function(response) {});
 });
 
 const input = document.getElementById('subtitle');
@@ -39,3 +44,13 @@ function appendFont(){
         });
     }
 }
+
+
+// document.getElementById('change_ratio_bt').addEventListener('click', function() {    
+
+//     console.log("aaaaaaa");
+//     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+//         chrome.tabs.sendMessage(tabs[0].id, { greeting: "ratio" }, function(response){});
+//     });
+
+// });

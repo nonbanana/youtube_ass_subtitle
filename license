@@ -1,3 +1,39 @@
-worker_proxy, (c) 2014 Rob Wu rob@robwu.nl (https://robwu.nl), MIT/X11 License, https://github.com/Rob--W/chrome-api/tree/master/worker_proxy
-JavascriptSubtitlesOctopus, (c) 2017-2021 JavascriptSubtitlesOctopus contributors, MIT License, https://github.com/libass/JavascriptSubtitlesOctopus
-noto-cjk, google, OFL-1.1 License, https://github.com/googlefonts/noto-cjk
+MIT License
+
+Copyright (c) 2022 nonbanana
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+================================================================================
+open-source license
+
+worker_proxy
+(c) 2014 Rob Wu rob@robwu.nl (https://robwu.nl)
+https://github.com/Rob--W/chrome-api/tree/master/worker_proxy
+MIT/X11 License
+
+JavascriptSubtitlesOctopus
+(c) 2017-2021 JavascriptSubtitlesOctopus contributors
+https://github.com/libass/JavascriptSubtitlesOctopus
+MIT License
+
+noto-cjk
+google
+https://github.com/googlefonts/noto-cjk
+OFL-1.1 License

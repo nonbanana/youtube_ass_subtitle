@@ -12,6 +12,8 @@ var SubtitlesOctopus = function (options) {
     console.log("WebAssembly support detected: " + (supportsWebAssembly ? "yes" : "no"));
 
     var self = this;
+
+    self.subHeightRatio = options.subHeightRatio || 1; //ass sub height/width ratio / video
     self.canvas = options.canvas; // HTML canvas element (optional if video specified)
     self.lossyRender = options.lossyRender; // Speedup render for heavy subs
     self.isOurCanvas = false; // (internal) we created canvas and manage it
@@ -210,7 +212,7 @@ var SubtitlesOctopus = function (options) {
     };
 
     self.getVideoPosition = function () {
-        var videoRatio = self.video.videoWidth / self.video.videoHeight;
+        var videoRatio = self.video.videoWidth / Math.floor(self.video.videoHeight * self.subHeightRatio);
         var width = self.video.offsetWidth, height = self.video.offsetHeight;
         var elementRatio = width / height;
         var realWidth = width, realHeight = height;
