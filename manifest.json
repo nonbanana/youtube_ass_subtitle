@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "youtube ass subtitle",
-    "version": "0.1.1",
+    "version": "0.1.3",
     "description": "apply ass subtitle at youtube",
     "browser_action": {
         "default_popup": "popup.html",
