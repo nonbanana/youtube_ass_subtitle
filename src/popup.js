@@ -5,52 +5,33 @@ document.getElementById('load_sub_bt').addEventListener('click', function() {
     chrome.tabs.executeScript({
         code: 'console.log("load subtitle")'
     });
-    // chrome.tabs.executeScript({
-    //     code: 'subtitle_instance = new SubtitlesOctopus(options);'
-    // });
     console.log("aaaaaaa");
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
         chrome.tabs.sendMessage(tabs[0].id, { greeting: "load" }, function(response){});
     });
-    // chrome.runtime.sendMessage({greeting: "load"}, function(response) {});
 });
 
-const input = document.getElementById('subtitle');
 document.getElementById('subtitle').addEventListener('change', changeSub);
 document.getElementById('font').addEventListener('change', appendFont);
+
 // 유저가 자막 파일을 선택하면 options의 subUrl 변수에 꽂아줌.
 function changeSub(){
     var file = document.getElementById('subtitle').files[0];
-    chrome.tabs.executeScript({
-        code: 'console.log("subtitle file changed")'
-    });
-    // FIXME - chrome.tabs.executeScript 대신 message로 통신하는게 나아보임  
-    chrome.tabs.executeScript({
-        code: 'options["subUrl"] = "' + URL.createObjectURL(file) + '";'
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+        chrome.tabs.sendMessage(tabs[0].id, { greeting: "changeSub", objUrl: URL.createObjectURL(file)}, function(response){});
     });
     // 버튼 활성화
     document.getElementById('load_sub_bt').removeAttribute('disabled')
 }
 
+// 폰트 파일을 URL로 만들어서 url 리스트를 메세지로 보내기 (options의 fonts 애 꽂아줌)
 function appendFont(){
     var files = document.getElementById('font').files;
-    chrome.tabs.executeScript({
-        code: 'console.log("font file appended")'
-    });
+    fileUrl = [];
     for (var i = 0; i < files.length; i++){
-        // FIXME - chrome.tabs.executeScript 대신 message로 통신하는게 나아보임  
-        chrome.tabs.executeScript({
-            code: 'options["fonts"].push("' + URL.createObjectURL(files[i]) + '");'
-        });
+        fileUrl.push(URL.createObjectURL(files[i]))
     }
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+        chrome.tabs.sendMessage(tabs[0].id, {greeting: "appendFont", objUrl: fileUrl}, function(response){});
+    });
 }
-
-
-// document.getElementById('change_ratio_bt').addEventListener('click', function() {    
-
-//     console.log("aaaaaaa");
-//     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-//         chrome.tabs.sendMessage(tabs[0].id, { greeting: "ratio" }, function(response){});
-//     });
-
-// });
