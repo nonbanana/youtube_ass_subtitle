@@ -1,6 +1,8 @@
 # youtube ass subtitle
-유튜브에서 .ass 확장자의 자막을 보이게 해줍니다.
+유튜브에서 SSA/ASS 확장자의 자막을 보이게 해줍니다.
 
+# 간단 사용법
+사진이 포함된 상세한 사용법은 [wiki 탭의 install 페이지](https://github.com/mbin96/youtube_ass_subtitle/wiki/install)를 참조 해주세요.
 ## 설치
 1. https://github.com/mbin96/youtube_ass_subtitle/archive/refs/tags/latest.zip 링크를 다운로드합니다
 2. 적당한곳에 압축을 해제 합니다.
@@ -14,11 +16,13 @@
 3. 팝업창에서 '파일선택' 버튼을 눌러 ass 자막을 선택합니다.
 4. load subtitle 버튼을 누르면 자막이 나옵니다.
 
-## TODOadd
-- 폰트 불러오기 기능 추가
-
-## BUG
-자막적용 후 다른 유튜브 페이지로 넘어가면 자막이 계속하여 나옵니다. 일단 새로고침을 하면 자막이 더이상 나오지 않습니다.
-
 ## 이 프로젝트에 사용된 오픈소스 라이센스
 license 파일을 참고하세요
+
+## 기부
+이 프로젝트가 마음에 드셨다면 개발자가 치킨을 먹을 수 있게 도와주세요
+  
+toss
+- link: [toss.me/xecachan](https://toss.me/xecachan)
+  
+![toss.me/xecachan](donation_link_toss.png)
