@@ -5,22 +5,9 @@ document.getElementById('load_sub_bt').addEventListener('click', function() {
     chrome.tabs.executeScript({
         code: 'console.log("load subtitle")'
     });
-    console.log("aaaaaaa");
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
         chrome.tabs.sendMessage(tabs[0].id, { greeting: "load" }, function(response){});
     });
-
-    chrome.tabs.onUpdated.addListener(function
-        (tabId, changeInfo, tab) {
-          if (changeInfo.url) {
-
-              chrome.tabs.executeScript({
-                  code: 'instance.dispose();'
-              });
-              }
-        }
-    );
-
 });
 
 document.getElementById('subtitle').addEventListener('change', changeSub);
