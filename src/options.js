@@ -8,12 +8,37 @@ function appendFont(){
         fileUrl.push(URL.createObjectURL(files[i]))
     }
 
-    // FIXME: appendFont 했을 때 따로　key-value storage 에 넣고 페이지 로드 때, 또는 subtitle 로드 때 불러오도록 하는 것이 좋을 것 같다. 
-    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-        chrome.tabs.sendMessage(tabs[0].id, {greeting: "appendFont", objUrl: fileUrl}, function(response){});
-        console.debug(`sent sendMessage appendFont@invoke`);
-    });
-    console.debug(`sent query appendFont@invoke`);
+
+    // appendFont 했을 때 따로　key-value storage 에 넣기
+
+    const combinedFontList = [];
+
+    getStorage('font_list', new Promise((object_to_get) => {
+        // got font list successfully
+        console.info(`got font_list succesfully`, object_to_get);
+        combinedFontList.push(...object_to_get);
+    }, (reason) => {
+        // failed to get font list
+        console.error(`failed to get font_list`, reason);
+    }));
+
+    combinedFontList.push(...fileUrl);
+
+    setStorage('font_list', combinedFontList, new Promise((object_to_set) => {
+        // set font list successfully
+        console.info(`set font_list succesfully`, object_to_set);
+    }, (reason) => {
+        // failed to set font list
+        console.error(`failed to set font_list`, reason);
+    }));
+
+
+    // // 2022-02-02 by LaruYan : subtitle/page 로드 때 불러오도록 하는 것이 좋을 것 같아서 이 부분 deprecate 처리
+    // chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+    //     chrome.tabs.sendMessage(tabs[0].id, {greeting: "appendFont", objUrl: combinedFontList}, function(response){});
+    //     console.debug(`sent sendMessage appendFont@invoke`);
+    // });
+    // console.debug(`sent query appendFont@invoke`);
 }
 
 // attach listener
