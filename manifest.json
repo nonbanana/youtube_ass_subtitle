@@ -19,15 +19,16 @@
     "content_scripts": [
         {
             "matches": ["https://*.youtube.com/*"],
-            "js": [ "src/worker_proxy/worker_proxy.js", "src/subtitles_octopus/subtitles-octopus.js", "src/loader.js"]
+            "js": [ "src/worker_proxy/worker_proxy.js", "src/subtitles_octopus/subtitles-octopus.js", "src/loader.js", "src/storage.js"]
         }
     ],
     "content_security_policy": "script-src 'self' 'wasm-eval'; object-src 'self'",
-    "web_accessible_resources": ["worker_proxy.html"],
-    "permissions": [ "https://*.youtube.com/*" ],
+    "web_accessible_resources": ["worker_proxy.html", "options.html"],
+    "permissions": [ "https://*.youtube.com/*", "storage" ],
     "icons": {
         "16": "image/16.png",
         "32": "image/32.png",
         "64": "image/64.png"
-    }
+    },
+    "options_page": "options.html"
   }

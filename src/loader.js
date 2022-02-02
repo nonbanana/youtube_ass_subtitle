@@ -38,6 +38,18 @@ async function loadSub(){
     if (!options["subUrl"]){
         return;
     }
+
+    if (!options["fonts"]){
+        console.debug("this should not happen. no fonts???? : loadSub"); // 기본적으로 노토산스 하나가 들어가있으므로 하나도 없을 리 없어요.
+    }
+
+    const gotFontList = await loadFontList();
+    if (gotFontList.length > 0) {
+        options["fonts"] = gotFontList;
+    } else {
+        console.info("user has not yet appended custom font list. : loadSub");
+    }
+
     if (subtitle_instance){
         subtitle_instance.freeTrack();
     }
@@ -98,4 +110,18 @@ async function createBlob(file_url){
     let response = await fetch(file_url);
     let blob = await response.blob();
     return blob;
+}
+
+// 글꼴 load
+async function loadFontList() {
+    const gotFontList = [];
+    getStorage('font_list', new Promise((object_to_get) => {
+        // got font list successfully
+        console.info(`got font_list succesfully : loadFontList()`, object_to_get);
+        gotFontList.push(...object_to_get);
+    }, (reason) => {
+        // failed to get font list
+        console.error(`failed to get font_list : loadFontList()`, reason);
+    }));
+    return gotFontList;
 }
