@@ -1,11 +1,10 @@
 // extention의 options 페이지에서 동작하는 스크립트로 페이지에서 실행되는 스크립트와는 분리 되어야 합니다.
 
-
 // 폰트 파일을 URL로 만들어서 url 리스트를 메세지로 보내기 (options의 fonts 애 꽂아줌)
 function appendFont(){
-    var files = document.getElementById('font').files;
-    fileUrl = [];
-    for (var i = 0; i < files.length; i++){
+    const files = document.getElementById('font').files;
+    const fileUrl = [];
+    for (let i = 0; i < files.length; i++){
         fileUrl.push(URL.createObjectURL(files[i]))
     }
 
@@ -18,4 +17,8 @@ function appendFont(){
 }
 
 // attach listener
-document.getElementById('font').addEventListener('change', appendFont);
+try {
+    document.getElementById('font').addEventListener('change', appendFont);
+} catch (e) {
+    console.debug(`caught exception attaching event listener : options.js`, JSON.stringify(e));
+}
