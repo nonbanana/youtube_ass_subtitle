@@ -25,11 +25,9 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     }else if (request.greeting === "changeSub"){
         // 자막 변경하기
         options["subUrl"] = request.objUrl;
-        loadSub();
     }else if (request.greeting === "appendFont"){
         // 폰트 목록 추가
         options["fonts"] = options["fonts"].concat(request.objUrl)
-        loadSub();
     }
 });
 
