@@ -5,7 +5,6 @@ document.getElementById('load_sub_bt').addEventListener('click', function() {
     chrome.tabs.executeScript({
         code: 'console.log("load subtitle")'
     });
-    console.log("aaaaaaa");
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
         chrome.tabs.sendMessage(tabs[0].id, { greeting: "load" }, function(response){});
     });
