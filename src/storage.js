@@ -1,39 +1,39 @@
 // storage related.
 
 
-// 매개변수로 제공된 key와 value에 해당하는 값을 storage에 JSON으로 변환하여 설정합니다.
-function setStorage(key, value, promise) {
+// 매개변수로 제공된 key와 valueString에 해당하는 string을 storage에 설정합니다.
+function setStorageString(key, valueString, promise) {
   const object_to_set = {};
-  object_to_set[`${key}`] = JSON.stringify(value); 
+  object_to_set[`${key}`] = valueString; 
   chrome.storage.local.set(object_to_set, function() {
-    // console.log('Value is set to ' + value);
-    promise.resolve(object_to_set);
+    // console.log(`${key} is set to ${valueString}`);
+    promise.resolve(valueString);
   });
 }
 
-// storage 에서 key에 해당하는 값을 가진 js object을 반환합니다
-function getStorage(key, promise) {
+// storage 에서 key에 해당하는 값을 가진 string을 반환합니다
+function getStorageString(key, promise) {
   chrome.storage.local.get(`${key}`, function(result) {
-    // console.log('Value currently is ' + result[`${key}`]);
-    const got_value = JSON.parse(result[`${key}`]);
-    promise.resolve(got_value);
+    // console.log(`${key} currently is ` + result[`${key}`]);
+    const valueString = result[`${key}`];
+    promise.resolve(valueString);
   });
 }
 
 
 // base64 문자열을 blob url로 반환합니다.
-function base64ToBlobUrl(string, mimeType) {
-  const raw = atob(string);
+function base64ToBlobUrl(valueString, mimeType) {
+  const raw = atob(valueString);
   const rawLength = raw.length;
-  const array = new Uint8Array(new ArrayBuffer(rawLength));
+  const uint8Array = new Uint8Array(new ArrayBuffer(rawLength));
   for (let i = 0; i < rawLength; i++) {
-    array[i] = raw.charCodeAt(i);
+    uint8Array[i] = raw.charCodeAt(i);
   }
-  const blob = new Blob([array], {
+  const blobObj = new Blob([uint8Array], {
     type: mimeType
   });
-  const url = window.URL.createObjectURL(blob)
-  return url;
+  const blobUrl = window.URL.createObjectURL(blobObj)
+  return blobUrl;
 }
 
 // file (input[type=file])에서 파일을 읽어 base64 문자열로 반환합니다.
@@ -46,7 +46,7 @@ function fileToBase64(file, promise) {
       promise.resolve(base64string);
     } catch (e) {
       console.error(`unable to load file : fileToBase64()`, e);
-      promise.reject(`unable to load file : fileToBase64()`,e);
+      promise.reject(`unable to load file : fileToBase64()`, e);
     }
   });
   reader.readAsArrayBuffer(file);

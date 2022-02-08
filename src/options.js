@@ -24,9 +24,9 @@ function appendFont(){
 
     combinedFontList.push(...fileUrl);
 
-    setStorage('font_list', combinedFontList, new Promise((object_to_set) => {
+    setStorage('font_list', combinedFontList, new Promise(() => {
         // set font list successfully
-        console.info(`set font_list succesfully`, object_to_set);
+        console.info(`set font_list succesfully`);
     }, (reason) => {
         // failed to set font list
         console.error(`failed to set font_list`, reason);
