@@ -13,10 +13,16 @@ function appendFont(){
 
     const combinedFontList = [];
 
-    getStorage('font_list', new Promise((got_value) => {
+    getStorageString('font_list', new Promise((got_value) => {
         // got font list successfully
-        console.info(`got font_list succesfully`, got_value);
-        combinedFontList.push(...got_value);
+        const got_value_obj = JSON.parse(got_value);
+        if (got_value_obj.font_list && Array.isArray(got_value_obj.font_list) && got_value_obj.font_list.length > 0){
+            console.info(`got font_list succesfully`, got_value_obj.font_list);
+            gotFontList.push(...got_value_obj.font_list);
+        } else {
+            // failed to get font list
+            console.error(`failed to get font_list`, "got value object is " + got_value_obj);
+        }
     }, (reason) => {
         // failed to get font list
         console.error(`failed to get font_list`, reason);
@@ -24,7 +30,7 @@ function appendFont(){
 
     combinedFontList.push(...fileUrl);
 
-    setStorage('font_list', combinedFontList, new Promise(() => {
+    setStorageString('font_list', JSON.stringify({font_list: combinedFontList}), new Promise(() => {
         // set font list successfully
         console.info(`set font_list succesfully`);
     }, (reason) => {

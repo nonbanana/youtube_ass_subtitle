@@ -115,10 +115,16 @@ async function createBlob(file_url){
 // 글꼴 load
 async function loadFontList() {
     const gotFontList = [];
-    getStorage('font_list', new Promise((got_value) => {
+    getStorageString('font_list', new Promise((got_value) => {
         // got font list successfully
-        console.info(`got font_list succesfully : loadFontList()`, got_value);
-        gotFontList.push(...got_value);
+        const got_value_obj = JSON.parse(got_value);
+        if (got_value_obj.font_list && Array.isArray(got_value_obj.font_list) && got_value_obj.font_list.length > 0){
+            console.info(`got font_list succesfully`, got_value_obj.font_list);
+            gotFontList.push(...got_value_obj.font_list);
+        } else {
+            // failed to get font list
+            console.error(`failed to get font_list`, "got value object is " + got_value_obj);
+        }
     }, (reason) => {
         // failed to get font list
         console.error(`failed to get font_list : loadFontList()`, reason);
