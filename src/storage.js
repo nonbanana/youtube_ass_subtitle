@@ -15,7 +15,7 @@ function setStorage(key, value, promise) {
 function getStorage(key, promise) {
   chrome.storage.local.get(`${key}`, function(result) {
     // console.log('Value currently is ' + result.key);
-    const got_value = JSON.parse(result.key);
+    const got_value = JSON.parse(result[`${key}`]);
     promise.resolve(got_value);
   });
 }
