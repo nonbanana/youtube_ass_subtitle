@@ -115,10 +115,10 @@ async function createBlob(file_url){
 // 글꼴 load
 async function loadFontList() {
     const gotFontList = [];
-    getStorage('font_list', new Promise((object_to_get) => {
+    getStorage('font_list', new Promise((got_value) => {
         // got font list successfully
-        console.info(`got font_list succesfully : loadFontList()`, object_to_get);
-        gotFontList.push(...object_to_get);
+        console.info(`got font_list succesfully : loadFontList()`, got_value);
+        gotFontList.push(...got_value);
     }, (reason) => {
         // failed to get font list
         console.error(`failed to get font_list : loadFontList()`, reason);

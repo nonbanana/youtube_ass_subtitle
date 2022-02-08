@@ -13,10 +13,10 @@ function appendFont(){
 
     const combinedFontList = [];
 
-    getStorage('font_list', new Promise((object_to_get) => {
+    getStorage('font_list', new Promise((got_value) => {
         // got font list successfully
-        console.info(`got font_list succesfully`, object_to_get);
-        combinedFontList.push(...object_to_get);
+        console.info(`got font_list succesfully`, got_value);
+        combinedFontList.push(...got_value);
     }, (reason) => {
         // failed to get font list
         console.error(`failed to get font_list`, reason);
