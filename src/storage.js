@@ -14,7 +14,7 @@ function setStorage(key, value, promise) {
 // storage 에서 key에 해당하는 값을 가진 js object을 반환합니다
 function getStorage(key, promise) {
   chrome.storage.local.get(`${key}`, function(result) {
-    // console.log('Value currently is ' + result.key);
+    // console.log('Value currently is ' + result[`${key}`]);
     const got_value = JSON.parse(result[`${key}`]);
     promise.resolve(got_value);
   });
