@@ -30,5 +30,8 @@
         "32": "image/32.png",
         "64": "image/64.png"
     },
-    "options_page": "options.html"
+    "options_ui": {
+      "page": "options/options.html",
+      "open_in_tab": true
+    }
   }
