@@ -41,6 +41,7 @@ async function loadSub(){
     if (subtitle_instance){
         subtitle_instance.freeTrack();
     }
+    options["video"] = document.getElementsByClassName('video-stream html5-main-video')[0]
     subtitle_instance = new SubtitlesOctopus(options);
 
     // ass 자막의 화면비율 측정하고 캔버스 크기 줄이기
