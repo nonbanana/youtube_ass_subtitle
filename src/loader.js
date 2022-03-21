@@ -3,6 +3,10 @@
 // subtitles octopus 인스턴스 할당할 변수 선언
 var subtitle_instance;
 
+// 자막, 폰트 파일을 가져오기 위한 input
+var input = document.createElement("input");
+input.type = "file";
+
 // subtitles octopus 옵션 변수
 var options = {
     // youtube video tag
@@ -23,18 +27,52 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     if (request.greeting === "load"){
         loadSub();
     }else if (request.greeting === "changeSub"){
+        console.log("open subtitle file dialog");
         // 자막 변경하기
-        options["subUrl"] = request.objUrl;
-        loadSub();
+        openFile(".ass, .ssa", false, function (event) {
+            var file = event.target.files[0];        
+            options["subUrl"] = URL.createObjectURL(file);
+            loadSub();
+        });
     }else if (request.greeting === "appendFont"){
         // 폰트 목록 추가
-        options["fonts"] = options["fonts"].concat(request.objUrl)
-        loadSub();
+        console.log("open font file dialog");
+        openFile(".ttf, .otf", true, function (event) {
+            // 리눅스(fedora35/gnome)에서 폴더 추가가 가능하여 extension 체크 로직 추가
+            var allowedExtensions = /(\.otf|\.ttf)$/i;
+            var files = event.target.files;
+            fileUrl = [];
+            for (var i = 0; i < files.length; i++){
+                if (!allowedExtensions.exec(files[i].name)) {
+                    continue;
+                } 
+                fileUrl.push(URL.createObjectURL(files[i]))
+            }
+            options["fonts"] = options["fonts"].concat(fileUrl)
+            loadSub();
+        });
+
     }
 });
 
+
 // inner functions
+// -------------------------------------
+
+// file open function
+// accept_ext: 확장자가 xxx, yyy 일때, ".xxx, .yyy"
+// multiple: boolean
+// onchange: input onchange시 실행되는 함수
+async function openFile(accept_ext, multiple, onchange){
+    input.accept = accept_ext;
+    input.onchange = onchange;
+    input.multiple = multiple;
+    input.click();
+}
+
+// video 태그에 subtitle octopus 이용해 자막 로드
 async function loadSub(){
+    console.log("load subtitle")
     if (!options["subUrl"]){
         return;
     }
